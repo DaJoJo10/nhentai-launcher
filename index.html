@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHentai Launcher</title>
+  <meta name="description" content="Detecta y abre códigos de nhentai desde cualquier texto">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f0f14">
+  <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <div class="app-icon">⚡</div>
+      <div class="app-title-group">
+        <h1 class="app-title">NHentai Launcher</h1>
+        <p class="app-subtitle">Pegá tus códigos abajo</p>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="input-section">
+        <textarea
+          id="input-text"
+          class="input-textarea"
+          placeholder="Pegá acá el texto con los códigos..."
+          rows="5"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        ></textarea>
+        <button id="btn-detect" class="btn btn-primary">
+          🔍 Detectar códigos
+        </button>
+      </div>
+
+      <section id="results-section" class="results-section" hidden>
+        <p id="counter" class="results-counter"></p>
+        <ul id="codes-list" class="codes-list"></ul>
+        <div id="actions" class="actions" hidden>
+          <button id="btn-unselect" class="btn btn-ghost">Desmarcar todo</button>
+          <button id="btn-clear" class="btn btn-ghost">Limpiar</button>
+          <button id="btn-open" class="btn btn-primary" disabled>Abrir seleccionados</button>
+        </div>
+      </section>
+    </main>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
