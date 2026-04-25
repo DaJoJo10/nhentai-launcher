@@ -2,3 +2,7 @@
 docs/superpowers/
 test.html
 generate-icons.html
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
