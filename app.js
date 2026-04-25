@@ -83,12 +83,27 @@ function init() {
     document.getElementById('results-section').hidden = true;
     document.getElementById('codes-list').innerHTML   = '';
     document.getElementById('actions').hidden         = true;
+    document.getElementById('btn-unselect').hidden    = false;
+    document.getElementById('btn-open').hidden        = false;
+    document.getElementById('btn-clear').style.gridColumn = '';
   });
 
   document.getElementById('btn-open').addEventListener('click', () => {
-    document.querySelectorAll('.code-checkbox:checked').forEach(cb => {
-      window.open(`https://nhentai.net/g/${cb.dataset.code}`, '_blank', 'noopener,noreferrer');
-    });
+    const checked = [...document.querySelectorAll('.code-checkbox:checked')];
+    if (checked.length === 0) return;
+
+    const plural = checked.length !== 1;
+    document.getElementById('counter').textContent =
+      `Tocá cada uno para abrirlo · ${checked.length} código${plural ? 's' : ''}`;
+
+    document.getElementById('codes-list').innerHTML = checked.map(cb => {
+      const code = cb.dataset.code;
+      return `<li class="tap-item"><a href="https://nhentai.net/g/${code}" target="_blank" rel="noopener noreferrer" class="tap-link"><span class="code-number">${code}</span><span class="tap-label">↗ Abrir</span></a></li>`;
+    }).join('');
+
+    document.getElementById('btn-unselect').hidden         = true;
+    document.getElementById('btn-open').hidden             = true;
+    document.getElementById('btn-clear').style.gridColumn = '1 / -1';
   });
 
   document.getElementById('codes-list').addEventListener('change', e => {
